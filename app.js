@@ -511,6 +511,20 @@ function initBriefLab() {
   render();
 }
 
+function initScrollTop() {
+  const btn = document.createElement("button");
+  btn.className = "scroll-top";
+  btn.setAttribute("aria-label", "Nach oben scrollen");
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3"/><path d="M3 8l5-5 5 5"/></svg>';
+  document.body.appendChild(btn);
+  window.addEventListener("scroll", () => {
+    btn.classList.toggle("visible", window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
 function initTestimonialRotator() {
   document.querySelectorAll("[data-testimonials]").forEach((container) => {
     const items = Array.from(container.querySelectorAll("[data-testimonial]"));
@@ -567,6 +581,7 @@ initContactValidation();
 initDiagnoseTool();
 initPriorityBoard();
 initBriefLab();
+initScrollTop();
 initTestimonialRotator();
 initActiveNav();
 const _page = location.pathname.split("/").pop() || "index.html";

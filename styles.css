@@ -1389,6 +1389,38 @@ details p {
   padding: 24px;
 }
 
+.scroll-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 220ms ease, transform 220ms ease, border-color 150ms ease, background 150ms ease;
+  pointer-events: none;
+  box-shadow: var(--shadow);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  border-color: var(--fg);
+  background: color-mix(in oklch, var(--fg) 5%, var(--surface));
+}
+
 .cookie-banner {
   position: fixed;
   left: 18px;
